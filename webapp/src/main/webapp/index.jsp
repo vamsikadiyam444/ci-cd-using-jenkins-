@@ -1,27 +1,49 @@
-<form action="action_page.php" style="border:1px solid #ccc">
-  <div class="container">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-    <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-    </label>
-
-    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-    <div class="clearfix">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn">Sign Up</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My DevOps Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            animation: rainbow 5s infinite alternate;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.5em;
+            color: #3333ff;
+        }
+        @keyframes rainbow {
+            0% { background-color: #ffeb3b; }
+            25% { background-color: #ff5722; }
+            50% { background-color: #4caf50; }
+            75% { background-color: #2196f3; }
+            100% { background-color: #9c27b0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hi! 👋</h1>
+        <p>This is Vamsi. Just started learning DevOps. 👍</p>
     </div>
-  </div>
-</form>
+</body>
+</html>
+
