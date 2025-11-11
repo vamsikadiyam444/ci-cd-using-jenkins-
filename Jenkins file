@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "vamsikrishna212/regapp"
+        BUILD_TAG = "${env.BUILD_NUMBER}"
+        CLUSTER_NAME = "my-demo-cluster"
+        REGION = "us-east-1"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building the Java application using Maven..."
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Docker Build & Push') {
+            steps {
+                echo "Building and pushing Docker image to DockerHub..."
+                sh "docker build -t ${DOCKER_IMAGE}:${BUILD_TAG} ."
+                sh "docker tag ${DOCKER_IMAGE}:${BUILD_TAG} ${DOCKER_IMAGE}:latest"
+                sh "docker push ${DOCKER_IMAGE}:${BUILD_TAG}"
+                sh "docker push ${DOCKER_IMAGE}:latest"
+            }
+        }
+
+        stage('Configure kubectl for EKS') {
+            steps {
+                echo "Configuring kubectl for EKS cluster..."
+                sh "aws eks update-kubeconfig --name ${CLUSTER_NAME} --region ${REGION}"
+            }
+        }
+
+        stage('Deploy to EKS') {
+            steps {
+                echo "Deploying to EKS..."
+                // Update deployment image with the new Docker image and tag
+                sh "kubectl set image deployment/regapp regapp=${DOCKER_IMAGE}:${BUILD_TAG} --record"
+                // Apply the service file
+                sh "kubectl apply -f service.yml"
+            }
+        }
+    }
+}
