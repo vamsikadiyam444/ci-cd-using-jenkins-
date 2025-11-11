@@ -299,7 +299,5 @@ Another Tomcat image:
 
 ![Tomcat2](images/tomcat2.png)
 
-## How to Run
 
-...rest of your README content...
 
