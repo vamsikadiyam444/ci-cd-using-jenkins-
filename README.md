@@ -284,3 +284,22 @@ sudo dnf install ansible -y
 ansible --version
 
 ```
+
+# My Project
+
+This project demonstrates my CI/CD pipeline with Jenkins, Docker, and EKS deployment.
+
+## Screenshots
+
+Here is an image of Tomcat:
+
+![Tomcat](images/tomcat.png)
+
+Another Tomcat image:
+
+![Tomcat2](images/tomcat2.png)
+
+## How to Run
+
+...rest of your README content...
+
